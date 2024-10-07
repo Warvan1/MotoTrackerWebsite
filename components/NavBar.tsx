@@ -1,4 +1,3 @@
-import LoginOrLogout from "./LoginOrLogout";
 import NavBarButton from "./NavBarButton";
 
 type Props = {
@@ -14,8 +13,9 @@ export default async function NavBar({ sessionBool }: Props){
             <NavBarButton title="Dashboard" url="/Dashboard"/>
             <NavBarButton title="Maintenance Log" url="/"/>
             <NavBarButton title="Statistics" url="/"/>
-            <NavBarButton title="Car manager" url="/"/>
-            <LoginOrLogout sessionBool={sessionBool}/>
+            <NavBarButton title="Car Manager" url="/CarManager"/>
+            {!sessionBool && <NavBarButton title="Login" url="/api/auth/login"/>}
+            {sessionBool && <NavBarButton title="Logout" url="/api/auth/logout"/>}
         </div>
     )
 }
