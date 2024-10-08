@@ -11,12 +11,12 @@ type Props = {
     }
 }
 
-type UserContextType = {
+type CarManagerListContext = {
     currentCar: number | null,
     setCurrentCar: ((currentCar: number) => void) | null
 }
 
-export const CarManagerListContext = createContext<UserContextType>({currentCar: null, setCurrentCar: null})
+export const CarManagerListContext = createContext<CarManagerListContext>({currentCar: null, setCurrentCar: null})
 
 export default function CarManagerList({ cars }: Props){
 

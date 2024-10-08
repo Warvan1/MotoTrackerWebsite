@@ -18,7 +18,7 @@ export async function fetcher(url: string, options: Options){
         options.cache = "default"
     }
 
-    const res = await fetch(`${process.env.AUTH0_AUDIENCE}${url}`, {
+    const res = await fetch(`${process.env.AUTH0_API_BASE_URL}${url}`, {
         method: options.method,
         headers: {
             'Content-Type': 'application/json',
