@@ -3,7 +3,8 @@ import { Session } from "@auth0/nextjs-auth0";
 type Options = {
     method?: string,
     session: Session,
-    car_id?: number
+    car_id?: number,
+    cache?: RequestCache
 }
 
 export async function fetcher(url: string, options: Options){
@@ -13,6 +14,9 @@ export async function fetcher(url: string, options: Options){
     if(options.car_id !== undefined){
         url = `${url}?car_id=${options.car_id}`
     }
+    if(options.cache === undefined){
+        options.cache = "default"
+    }
 
     const res = await fetch(`${process.env.AUTH0_AUDIENCE}${url}`, {
         method: options.method,
@@ -21,7 +25,7 @@ export async function fetcher(url: string, options: Options){
             Authorization: `Bearer ${options.session.accessToken}`,
             userid: options.session.user.sub
         },
-        cache: "no-store"
+        cache: options.cache
     });
     const data = await res.json();
     return data;

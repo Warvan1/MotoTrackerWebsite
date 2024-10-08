@@ -1,4 +1,4 @@
-import CarManagerCard from '@/components/CarManagerCard';
+import CarManagerList from '@/components/CarManagerList';
 import NavBar from '@/components/NavBar';
 import { fetcher } from '@/utilities/fetcher';
 import { Car } from '@/utilities/types';
@@ -11,15 +11,13 @@ export default async function CarManager() {
         redirect("/api/auth/login");
     }
 
-    const cars: { cars: Car[], current_car: string } = await fetcher("/getcars", { session: session })
+    const cars: { cars: Car[], current_car: number } = await fetcher("/getcars", { session: session })
 
     return (
         <div>
-            <NavBar sessionBool={!!session}/>
+            <NavBar sessionBool={true}/>
             <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Car Manager</p>
-            {cars.cars.map((car, index: number) => (
-                <CarManagerCard key={index} car={car}/>
-            ))}
+            <CarManagerList cars={cars}/>
         </div>
     );
 }

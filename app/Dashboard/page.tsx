@@ -14,7 +14,7 @@ export default async function Dashboard() {
 
     return (
         <div>
-            <NavBar sessionBool={!!session}/>
+            <NavBar sessionBool={true}/>
             <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Dashboard</p>
             <p className='flex justify-center p-2 top-0 w-screen text-white'>{currentCar.name}</p>
         </div>
