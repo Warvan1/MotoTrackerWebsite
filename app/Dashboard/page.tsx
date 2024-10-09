@@ -10,13 +10,13 @@ export default async function Dashboard() {
         redirect("/api/auth/login");
     }
 
-    const currentCar: Car = await fetcher("/getcurrentcar", { session: session })
+    const currentCar: Car | null = await fetcher("/getcurrentcar", { session: session })
 
     return (
         <div>
             <NavBar sessionBool={true}/>
             <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Dashboard</p>
-            <p className='flex justify-center p-2 top-0 w-screen text-white'>{currentCar.name}</p>
+            {currentCar != null && <p className='flex justify-center p-2 top-0 w-screen text-white'>{currentCar.name}</p>}
         </div>
     );
 }

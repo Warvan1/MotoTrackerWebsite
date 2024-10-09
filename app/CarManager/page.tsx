@@ -1,3 +1,4 @@
+import AddCarButton from '@/components/AddCarButton';
 import CarManagerList from '@/components/CarManagerList';
 import NavBar from '@/components/NavBar';
 import { fetcher } from '@/utilities/fetcher';
@@ -17,6 +18,7 @@ export default async function CarManager() {
         <div>
             <NavBar sessionBool={true}/>
             <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Car Manager</p>
+            <AddCarButton/>
             <CarManagerList cars={cars}/>
         </div>
     );
