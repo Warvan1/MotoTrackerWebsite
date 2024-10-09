@@ -1,9 +1,10 @@
 import NavBar from '@/components/NavBar';
+import { addUser } from '@/utilities/addUser';
 import { getSession } from '@auth0/nextjs-auth0';
 
 export default async function Home() {
-    const session = await getSession();
-    //TODO: /getUser and /addUser if needed api call on page load? for all pages?
+    const session = await getSession()
+    if(session) await addUser(session)
 
     return (
         <div>

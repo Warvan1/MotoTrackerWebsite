@@ -4,7 +4,7 @@ type Options = {
     method?: string,
     session: Session,
     car_id?: number,
-    body?: BodyInit,
+    body?: object,
     cache?: RequestCache
 }
 
