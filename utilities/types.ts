@@ -19,3 +19,8 @@ export type Car = {
     registration_time: string,
     permissions: string
 }
+
+export type Cars = {
+    cars: Car[]
+    current_car: number
+}

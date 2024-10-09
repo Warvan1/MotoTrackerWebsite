@@ -2,16 +2,14 @@
 
 import { clientFetcher } from "@/utilities/clientFetcher";
 import { Car } from "@/utilities/types";
-import { useContext } from "react";
-import { CarManagerListContext } from "./CarManagerList";
 
 type Props = {
     car: Car,
+    currentCar: number | null,
+    setCurrentCar: (currentCar: number) => void | null
 }
 
-export default function CarManagerCard({ car }: Props){
-
-    const { currentCar, setCurrentCar } = useContext(CarManagerListContext)
+export default function CarManagerCard({ car, currentCar, setCurrentCar }: Props){
 
     const handleSetCurrentCar = async () => {
         if(currentCar === car.car_id) return

@@ -1,36 +1,35 @@
 "use client"
 
-import { Car } from "@/utilities/types"
+import { Cars } from "@/utilities/types"
 import CarManagerCard from "./CarManagerCard";
-import { createContext, useState } from "react";
+import { useEffect, useState } from "react";
+import AddCarButton from "./AddCarButton";
 
 type Props = {
-    cars: {
-        cars: Car[]
-        current_car: number
-    }
+    cars: Cars
 }
-
-type CarManagerListContext = {
-    currentCar: number | null,
-    setCurrentCar: ((currentCar: number) => void) | null
-}
-
-export const CarManagerListContext = createContext<CarManagerListContext>({currentCar: null, setCurrentCar: null})
 
 export default function CarManagerList({ cars }: Props){
 
-    const [currentCar, setCurrentCar] = useState(cars.current_car)
+    const [ carsList, setCarsList ] = useState(cars)
+    const [ currentCar, setCurrentCar ] = useState(cars.current_car)
+
+    useEffect(() => {
+        if(!carsList) return
+        if(carsList.current_car !== currentCar) setCurrentCar(carsList.current_car)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [carsList])
 
     return (
-        <div className="flex justify-center">
-            <div>
-                <CarManagerListContext.Provider value = {{currentCar, setCurrentCar}}>
-                    {cars.cars.map((car, index: number) => (
-                        <CarManagerCard key={index} car={car}/>
+        <>
+            <AddCarButton carsList={carsList} setCarsList={setCarsList}/>
+            <div className="flex justify-center">
+                <div>
+                    {carsList.cars.map((car, index: number) => (
+                        <CarManagerCard key={index} car={car} currentCar={currentCar} setCurrentCar={setCurrentCar}/>
                     ))}
-                </CarManagerListContext.Provider>
+                </div>
             </div>
-        </div>
+        </>
     );
 }

@@ -2,8 +2,14 @@
 
 import { clientFetcher } from "@/utilities/clientFetcher";
 import React, { useState } from "react"
+import { Cars } from "@/utilities/types";
 
-export default function AddCarButton(){
+type Props = {
+    carsList: Cars | null
+    setCarsList: (currentCar: Cars) => void | null
+}
+
+export default function AddCarButton({ carsList, setCarsList }: Props){
     const [ showModal, setShowModal ] = useState(false);
     const [ formData, setFormData ] = useState({
         name: "",
@@ -37,16 +43,13 @@ export default function AddCarButton(){
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        await clientFetcher("/api/addcar", {
+        const newCar = await clientFetcher("/api/addcar", {
             method: 'POST',
-            body: JSON.stringify(formData)
+            body: JSON.stringify({formData: formData})
         })
 
-        console.log(formData)
-
-        //Refresh the page
-        //TODO: replace the refresh with adding the car returned by /addcar to the cars array in CarManagerList using a context on a context
-        window.location.reload()
+        if(setCarsList && carsList) setCarsList({ cars: [...carsList.cars, newCar], current_car: newCar.car_id })
+        handleCloseModal()
     }
 
     return (

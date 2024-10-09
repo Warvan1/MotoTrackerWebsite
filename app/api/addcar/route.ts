@@ -14,6 +14,6 @@ export async function POST(req: NextRequest){
     return NextResponse.json(await fetcher("/addcar", {
         method: 'POST',
         session: session,
-        body: body
+        body: body.formData
     }))
 }
