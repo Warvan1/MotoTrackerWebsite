@@ -2,14 +2,16 @@
 
 import { clientFetcher } from "@/utilities/clientFetcher";
 import { Car } from "@/utilities/types";
+import ShareCarButton from "./ShareCarButton";
 
 type Props = {
     car: Car,
     currentCar: number | null,
-    setCurrentCar: (currentCar: number) => void | null
+    setCurrentCar: (currentCar: number) => void | null,
+    user: string
 }
 
-export default function CarManagerCard({ car, currentCar, setCurrentCar }: Props){
+export default function CarManagerCard({ car, currentCar, setCurrentCar, user }: Props){
 
     const handleSetCurrentCar = async () => {
         if(currentCar === car.car_id) return
@@ -38,6 +40,8 @@ export default function CarManagerCard({ car, currentCar, setCurrentCar }: Props
             <div className="flex">
                 <p className="py-1 pr-8 pl-1 text-sm">Miles: {car.miles}</p>
             </div>
+            {user === car.user_id && <ShareCarButton car_id={car.car_id}/>}
+            <button id="delete" className="m-1 p-2 bg-yellow-600 hover:bg-yellow-900 rounded-full">Delete</button>
         </div>
     )
 }

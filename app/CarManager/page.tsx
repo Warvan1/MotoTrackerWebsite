@@ -17,7 +17,7 @@ export default async function CarManager() {
         <div>
             <NavBar sessionBool={true}/>
             <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Car Manager</p>
-            <CarManagerList cars={cars}/>
+            <CarManagerList cars={cars} user={session.user.sub}/>
         </div>
     );
 }

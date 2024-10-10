@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import AddCarButton from "./AddCarButton";
 
 type Props = {
-    cars: Cars
+    cars: Cars,
+    user: string
 }
 
-export default function CarManagerList({ cars }: Props){
+export default function CarManagerList({ cars, user }: Props){
 
     const [ carsList, setCarsList ] = useState(cars)
     const [ currentCar, setCurrentCar ] = useState(cars.current_car)
@@ -26,7 +27,7 @@ export default function CarManagerList({ cars }: Props){
             <div className="flex justify-center">
                 <div>
                     {carsList.cars.map((car, index: number) => (
-                        <CarManagerCard key={index} car={car} currentCar={currentCar} setCurrentCar={setCurrentCar}/>
+                        <CarManagerCard key={index} car={car} currentCar={currentCar} setCurrentCar={setCurrentCar} user={user}/>
                     ))}
                 </div>
             </div>
