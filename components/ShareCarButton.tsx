@@ -8,10 +8,14 @@ type Props = {
 }
 
 export default function ShareCarButton({ car_id }: Props){
-    const [ showModal, setShowModal ] = useState(false);
+    const [ showModal, setShowModal ] = useState(false)
     const [ formData, setFormData ] = useState({
         email: "",
         permissions: "View"
+    })
+    const [ resultMessage, setResultMessage ] = useState({
+        success: false,
+        message: ""
     })
 
     const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -21,6 +25,10 @@ export default function ShareCarButton({ car_id }: Props){
 
     const handleCloseModal = () => {
         setShowModal(false)
+        setResultMessage({
+            success: false,
+            message: ""
+        })
     }
 
     const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -47,8 +55,6 @@ export default function ShareCarButton({ car_id }: Props){
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        //TODO: API Call
-        console.log(formData)
         const success = await clientFetcher("/api/sharecar", {
             method: 'POST',
             body: JSON.stringify({
@@ -57,9 +63,10 @@ export default function ShareCarButton({ car_id }: Props){
             })
         })
 
-        console.log(success)
-
-        handleCloseModal()
+        setResultMessage({
+            success: success.success,
+            message: `${success.success ? `Shared Car with ${formData.email}` : `Failed to share car with ${formData.email}`}`
+        })
     }
 
     return (
@@ -99,6 +106,7 @@ export default function ShareCarButton({ car_id }: Props){
                                 <button type="submit" className="px-4 py-2 rounded-md bg-green-600 hover:bg-green-900 text-white">Submit</button>
                             </div>
                         </form>
+                        <div className={`${resultMessage.message.length !== 0 ? "my-2 px-4 py-2" : null} ${resultMessage.success ? "bg-green-600" : "bg-red-600"} rounded-md`}><p>{resultMessage.message}</p></div>
                     </div>
                 </div>
             )}
