@@ -1,26 +1,16 @@
-type Options = {
-    method?: string,
-    body?: BodyInit
-}
-
-export async function clientFetcher(url: string, options: Options){
-    if(options.method === undefined){
-        options.method = "GET"
-    }
-
+export async function clientFetcher(body: object){
     try{
-        const res = await fetch(`${url}`, {
-            method: options.method,
+        const res = await fetch("/api/serverfetcherproxy", {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: options.body
-        });
+            body: JSON.stringify(body)
+        })
 
         return await res.json();
     }
     catch(error){
         console.error('error fetching data', error);
     }
-
 }

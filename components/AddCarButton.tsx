@@ -43,10 +43,11 @@ export default function AddCarButton({ carsList, setCarsList }: Props){
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        const newCar = await clientFetcher("/api/addcar", {
+        const newCar = await clientFetcher({
+            url: '/addcar',
             method: 'POST',
-            body: JSON.stringify({formData: formData})
-        })
+            body: formData
+        });
 
         if(setCarsList && carsList) setCarsList({ cars: [...carsList.cars, newCar], current_car: newCar.car_id })
         handleCloseModal()

@@ -16,12 +16,10 @@ export default function CarManagerCard({ car, currentCar, setCurrentCar, user }:
     const handleSetCurrentCar = async () => {
         if(currentCar === car.car_id) return
 
-        await clientFetcher("/api/setcurrentcar", {
-            method: 'POST',
-            body: JSON.stringify({
-                car_id: car.car_id
-            })
-        });
+        await clientFetcher({
+            url: '/setcurrentcar',
+            car_id: car.car_id
+        })
 
         if(setCurrentCar) setCurrentCar(car.car_id)
     }

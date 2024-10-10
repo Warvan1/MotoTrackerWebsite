@@ -55,12 +55,11 @@ export default function ShareCarButton({ car_id }: Props){
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        const success = await clientFetcher("/api/sharecar", {
+        const success = await clientFetcher({
+            url: '/sharecar',
             method: 'POST',
-            body: JSON.stringify({
-                car_id: car_id,
-                formData: formData
-            })
+            car_id: car_id,
+            body: formData
         })
 
         setResultMessage({

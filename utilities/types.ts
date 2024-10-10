@@ -1,3 +1,13 @@
+import { Session } from "@auth0/nextjs-auth0"
+
+export type FetcherOptions = {
+    method?: string,
+    session: Session,
+    car_id?: number,
+    body?: object,
+    cache?: RequestCache
+}
+
 export type Car = {
     car_id: number,
     user_id: string,

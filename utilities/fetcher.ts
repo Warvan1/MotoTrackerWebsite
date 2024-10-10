@@ -1,14 +1,6 @@
-import { Session } from "@auth0/nextjs-auth0";
+import { FetcherOptions } from "./types";
 
-type Options = {
-    method?: string,
-    session: Session,
-    car_id?: number,
-    body?: object,
-    cache?: RequestCache
-}
-
-export async function fetcher(url: string, options: Options){
+export async function fetcher(url: string, options: FetcherOptions){
     if(options.method === undefined){
         options.method = "GET"
     }
