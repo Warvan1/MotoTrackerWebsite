@@ -74,7 +74,7 @@ export default function ShareCarButton({ car_id }: Props){
             {showModal && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">
-                        <p className="text-2xl mb-4">Add Car</p>
+                        <p className="text-2xl mb-4">Share Car</p>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
                                 <label className="block text-sm mb-2">Email</label>

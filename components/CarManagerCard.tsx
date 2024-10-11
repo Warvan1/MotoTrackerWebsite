@@ -3,6 +3,7 @@
 import { clientFetcher } from "@/utilities/clientFetcher";
 import { Car } from "@/utilities/types";
 import ShareCarButton from "./ShareCarButton";
+import DeleteCarButton from "./DeleteCarButton";
 
 type Props = {
     car: Car,
@@ -39,7 +40,7 @@ export default function CarManagerCard({ car, currentCar, setCurrentCar, user }:
                 <p className="py-1 pr-8 pl-1 text-sm">Miles: {car.miles}</p>
             </div>
             {user === car.user_id && <ShareCarButton car_id={car.car_id}/>}
-            <button id="delete" className="m-1 p-2 bg-yellow-600 hover:bg-yellow-900 rounded-full">Delete</button>
+            <DeleteCarButton ownership={(user === car.user_id)} car={car}/>
         </div>
     )
 }
