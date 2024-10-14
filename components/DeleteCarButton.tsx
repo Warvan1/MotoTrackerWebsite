@@ -5,15 +5,18 @@ import { Car } from "@/utilities/types";
 import React, { useState } from "react";
 
 type Props = {
-    ownership: boolean,
-    car: Car
+    user: string,
+    car: Car,
+    setDeleted: (deleted: boolean) => void | null,
 }
 
-export default function DeleteCarButton({ ownership, car }: Props){
+export default function DeleteCarButton({ user, car, setDeleted}: Props){
     const [ showModal, setShowModal ] = useState(false)
     const [ formData, setFormData ] = useState({
         name: "",
     })
+
+    const ownership = (user === car.user_id);
 
     const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation()
@@ -49,7 +52,7 @@ export default function DeleteCarButton({ ownership, car }: Props){
         })
 
         handleCloseModal()
-        //TODO: delete the card from the sceen
+        setDeleted(true)
     }
 
     const handleRemoveAccessSubmit = async (e: React.FormEvent) => {
@@ -61,7 +64,7 @@ export default function DeleteCarButton({ ownership, car }: Props){
         })
 
         handleCloseModal()
-        //TODO: delete the card from the sceen
+        setDeleted(true)
     }
 
     return (

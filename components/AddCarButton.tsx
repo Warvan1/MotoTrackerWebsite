@@ -6,10 +6,11 @@ import { Cars } from "@/utilities/types";
 
 type Props = {
     carsList: Cars | null
-    setCarsList: (currentCar: Cars) => void | null
+    setCarsList: (carsList: Cars) => void | null
+    setCurrentCar: (currentCar: number) => void | null,
 }
 
-export default function AddCarButton({ carsList, setCarsList }: Props){
+export default function AddCarButton({ carsList, setCarsList, setCurrentCar }: Props){
     const [ showModal, setShowModal ] = useState(false);
     const [ formData, setFormData ] = useState({
         name: "",
@@ -50,6 +51,7 @@ export default function AddCarButton({ carsList, setCarsList }: Props){
         });
 
         if(setCarsList && carsList) setCarsList({ cars: [...carsList.cars, newCar], current_car: newCar.car_id })
+        if(setCurrentCar) setCurrentCar(newCar.car_id)
         handleCloseModal()
     }
 
