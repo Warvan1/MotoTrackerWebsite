@@ -21,7 +21,7 @@ export default function CarManagerList({ cars, user }: Props){
             <div className="flex justify-center">
                 <div>
                     {carsList.cars.map((car, index: number) => (
-                        <CarManagerCard key={index} user={user} car={car} currentCar={currentCar} setCurrentCar={setCurrentCar}/>
+                        <CarManagerCard key={index} user={user} carProp={car} currentCar={currentCar} setCurrentCar={setCurrentCar}/>
                     ))}
                 </div>
             </div>

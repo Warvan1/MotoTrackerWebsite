@@ -4,17 +4,19 @@ import { clientFetcher } from "@/utilities/clientFetcher";
 import { Car } from "@/utilities/types";
 import ShareCarButton from "./ShareCarButton";
 import DeleteCarButton from "./DeleteCarButton";
+import EditCarButton from "./EditCarButton";
 import { useState } from "react";
 
 type Props = {
-    car: Car,
+    carProp: Car,
     user: string,
     currentCar: number | null,
     setCurrentCar: (currentCar: number) => void | null,
 }
 
-export default function CarManagerCard({ car, user, currentCar, setCurrentCar }: Props){
-    const [ deleted, setDeleted ] = useState(false);
+export default function CarManagerCard({ carProp, user, currentCar, setCurrentCar }: Props){
+    const [ deleted, setDeleted ] = useState(false)
+    const [ car, setCar] = useState(carProp)
 
     const handleSetCurrentCar = async () => {
         if(currentCar === car.car_id) return
@@ -43,6 +45,7 @@ export default function CarManagerCard({ car, user, currentCar, setCurrentCar }:
                     <p className="py-1 pr-8 pl-1 text-sm">Miles: {car.miles}</p>
                 </div>
                 {user === car.user_id && <ShareCarButton car_id={car.car_id}/>}
+                {car.permissions === "Edit" && <EditCarButton car={car} setCar={setCar}/>}
                 <DeleteCarButton user={user} car={car} setDeleted={setDeleted}/>
             </div>}
         </>
