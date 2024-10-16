@@ -11,7 +11,7 @@ export default async function NavBar({ sessionBool }: Props){
             <p className="p-4 text-3xl">MotoTracker</p>
             <NavBarButton title="Home" url="/"/>
             <NavBarButton title="Dashboard" url="/Dashboard"/>
-            <NavBarButton title="Maintenance Log" url="/"/>
+            <NavBarButton title="Maintenance Log" url="/MaintenanceLog/1"/>
             <NavBarButton title="Statistics" url="/"/>
             <NavBarButton title="Car Manager" url="/CarManager"/>
             {!sessionBool && <NavBarButton title="Login" url="/api/auth/login"/>}

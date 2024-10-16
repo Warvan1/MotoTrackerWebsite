@@ -4,8 +4,22 @@ export async function fetcher(url: string, options: FetcherOptions){
     if(options.method === undefined){
         options.method = "GET"
     }
+    let prefix = "?"
     if(options.car_id !== undefined){
-        url = `${url}?car_id=${options.car_id}`
+        url = `${url}${prefix}car_id=${options.car_id}`
+        prefix = "&"
+    }
+    if(options.filter !== undefined){
+        url = `${url}${prefix}filter=${options.filter}`
+        prefix = "&"
+    }
+    if(options.page !== undefined){
+        url = `${url}${prefix}page=${options.page}`
+        prefix = "&"
+    }
+    if(options.statistics !== undefined){
+        url = `${url}${prefix}page=${options.statistics}`
+        prefix = "&"
     }
 
     const fetchOptions: RequestInit = {

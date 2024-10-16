@@ -31,9 +31,8 @@ export default async function Dashboard() {
     return (
         <div>
             <NavBar sessionBool={true}/>
-            <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Dashboard</p>
             {currentCar != null && <>
-                <p className='flex justify-center p-2 top-0 w-screen text-white'>{currentCar.name}</p>
+                <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Dashboard</p>
                 <div className='flex justify-center'>
                     <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
                         <div className='flex'>

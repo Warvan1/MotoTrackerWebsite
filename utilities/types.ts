@@ -4,6 +4,9 @@ export type FetcherOptions = {
     method?: string,
     session: Session,
     car_id?: number,
+    filter?: string,
+    page?: number,
+    statistics?: number,
     body?: object,
     cache?: RequestCache
 }
@@ -33,4 +36,22 @@ export type Car = {
 export type Cars = {
     cars: Car[]
     current_car: number
+}
+
+export type Maintenance = {
+    car_id: number
+    maintenance_id: number,
+    user_id: string,
+    timestamp: string,
+    service_type: string,
+    miles: number,
+    cost: string,
+    gallons: string,
+    notes: string
+}
+
+export type MaintenanceList = {
+    data: Maintenance[],
+    totalPages: number,
+    page: number
 }
