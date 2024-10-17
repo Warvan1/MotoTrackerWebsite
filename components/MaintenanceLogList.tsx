@@ -13,9 +13,9 @@ export default function MaintenanceLogList({ maintenanceList, currentCar }: Prop
 
     return (
         <>
-            <div className="flex justify-center">
+            {currentCar.permissions === "Edit" && <div className="flex justify-center">
                 <AddMaintenanceLog currentCar={currentCar}/>
-            </div>
+            </div>}
             <div className="flex justify-center">
                 <div>
                     {maintenanceList.data.map((log, index: number) => (

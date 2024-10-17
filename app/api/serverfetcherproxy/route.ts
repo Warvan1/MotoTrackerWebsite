@@ -22,6 +22,7 @@ export async function POST(req: NextRequest){
     if(typeof body.method === "string") options.method = body.method
     if(typeof body.car_id === "number") options.car_id = body.car_id
     if(typeof body.cache === "string") options.cache = body.cache
+    if(typeof body.maintenance_id === "number") options.maintenance_id = body.maintenance_id
     if(body.body !== undefined) options.body = body.body
     
     return NextResponse.json(await fetcher(body.url, options));

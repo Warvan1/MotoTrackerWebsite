@@ -21,6 +21,9 @@ export async function fetcher(url: string, options: FetcherOptions){
         url = `${url}${prefix}page=${options.statistics}`
         prefix = "&"
     }
+    if(options.maintenance_id !== undefined){
+        url = `${url}${prefix}maintenance_id=${options.maintenance_id}`
+    }
 
     const fetchOptions: RequestInit = {
         method: options.method,

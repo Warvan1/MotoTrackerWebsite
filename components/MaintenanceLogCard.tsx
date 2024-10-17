@@ -1,6 +1,7 @@
 "use client"
 
 import { Maintenance } from "@/utilities/types"
+import DeleteMaintenanceLog from "./DeleteMaintenanceLog"
 
 type Props = {
     log: Maintenance
@@ -23,6 +24,9 @@ export default function MaintenanceLogCard({ log }: Props){
                 </div>
                 <div className="flex">
                     <p className="py-1 pr-8 pl-1 text-sm">{log.notes}</p>
+                </div>
+                <div className="flex">
+                    <DeleteMaintenanceLog id={log.maintenance_id}/>
                 </div>
             </div>
         </>

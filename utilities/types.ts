@@ -7,6 +7,7 @@ export type FetcherOptions = {
     filter?: string,
     page?: number,
     statistics?: number,
+    maintenance_id?: number,
     body?: object,
     cache?: RequestCache
 }
