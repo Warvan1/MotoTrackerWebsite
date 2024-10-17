@@ -34,7 +34,7 @@ export default async function MaintenanceLogDetails({ params }: Props){
         <div>
             <NavBar sessionBool={true}/>
             <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Maintenance Log - {currentCar.name}</p>
-            <MaintenanceLogList maintenanceList={maintenanceList}/>
+            <MaintenanceLogList maintenanceList={maintenanceList} currentCar={currentCar}/>
         </div>
     )
 }
