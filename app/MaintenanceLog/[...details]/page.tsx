@@ -1,3 +1,4 @@
+import MaintenanceLogHeader from "@/components/MaintenanceLogHeader"
 import MaintenanceLogList from "@/components/MaintenanceLogList"
 import NavBar from "@/components/NavBar"
 import { addUser } from "@/utilities/addUser"
@@ -17,7 +18,6 @@ export default async function MaintenanceLogDetails({ params }: Props){
     if(!session) redirect("/api/auth/login")
     await addUser(session)
     
-
     const currentCar: Car | null = await fetcher("/getcurrentcar", { session: session })
     if(currentCar === null) redirect("/")
 
@@ -34,7 +34,8 @@ export default async function MaintenanceLogDetails({ params }: Props){
         <div>
             <NavBar sessionBool={true}/>
             <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Maintenance Log - {currentCar.name}</p>
-            <MaintenanceLogList maintenanceList={maintenanceList} currentCar={currentCar}/>
+            <MaintenanceLogHeader currentCar={currentCar} details={params.details} pages={maintenanceList.totalPages}/>
+            <MaintenanceLogList maintenanceList={maintenanceList}/>
         </div>
     )
 }

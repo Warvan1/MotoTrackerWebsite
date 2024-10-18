@@ -1,21 +1,16 @@
 "use client"
 
-import { Car, MaintenanceList } from "@/utilities/types"
+import { MaintenanceList } from "@/utilities/types"
 import MaintenanceLogCard from "./MaintenanceLogCard"
-import AddMaintenanceLog from "./AddMaintenanceLog"
 
 type Props = {
     maintenanceList: MaintenanceList,
-    currentCar: Car
 }
 
-export default function MaintenanceLogList({ maintenanceList, currentCar }: Props){
+export default function MaintenanceLogList({ maintenanceList }: Props){
 
     return (
         <>
-            {currentCar.permissions === "Edit" && <div className="flex justify-center">
-                <AddMaintenanceLog currentCar={currentCar}/>
-            </div>}
             <div className="flex justify-center">
                 <div>
                     {maintenanceList.data.map((log, index: number) => (
