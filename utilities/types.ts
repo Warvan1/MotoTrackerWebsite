@@ -56,3 +56,11 @@ export type MaintenanceList = {
     totalPages: number,
     page: number
 }
+
+export type statsData = {
+    mpgData: number[],
+    dpgData: number[],
+    dpmData: number[]
+}
+
+export type statsDataKey = keyof statsData

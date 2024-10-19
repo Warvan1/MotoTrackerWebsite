@@ -12,7 +12,7 @@ export default async function NavBar({ sessionBool }: Props){
             <NavBarButton title="Home" url="/"/>
             <NavBarButton title="Dashboard" url="/Dashboard"/>
             <NavBarButton title="Maintenance Log" url="/MaintenanceLog/1"/>
-            <NavBarButton title="Statistics" url="/"/>
+            <NavBarButton title="Statistics" url="/Statistics"/>
             <NavBarButton title="Car Manager" url="/CarManager"/>
             {!sessionBool && <NavBarButton title="Login" url="/api/auth/login"/>}
             {sessionBool && <NavBarButton title="Logout" url="/api/auth/logout"/>}

@@ -18,7 +18,7 @@ export async function fetcher(url: string, options: FetcherOptions){
         prefix = "&"
     }
     if(options.statistics !== undefined){
-        url = `${url}${prefix}page=${options.statistics}`
+        url = `${url}${prefix}statistics=${options.statistics}`
         prefix = "&"
     }
     if(options.maintenance_id !== undefined){
