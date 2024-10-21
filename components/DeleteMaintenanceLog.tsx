@@ -1,3 +1,5 @@
+"use client"
+
 import { clientFetcher } from "@/utilities/clientFetcher"
 import { useRouter } from "next/navigation";
 import { useState } from "react"

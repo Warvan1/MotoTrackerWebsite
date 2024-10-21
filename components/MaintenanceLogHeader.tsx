@@ -13,7 +13,8 @@ type Props = {
 export default function MaintenanceLogHeader({ currentCar, details, pages }: Props){
     const router = useRouter()
     let filter = "All"
-    if(details.length >= 1) filter = details[1]
+    if(details.length > 1) filter = details[1]
+    if(details.length > 1) details[1] = details[1].split("%20").join(" ")
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         if(e.target.value === "All") router.push(`/MaintenanceLog/${details[0]}`)

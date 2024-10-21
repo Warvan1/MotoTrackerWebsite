@@ -1,3 +1,5 @@
+"use client"
+
 import { clientFetcher } from "@/utilities/clientFetcher";
 import { Car } from "@/utilities/types";
 import { useState } from "react";
