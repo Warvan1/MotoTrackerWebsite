@@ -1,8 +1,10 @@
 import AddMaintenanceLog from '@/components/AddMaintenanceLog';
 import DashboardCard from '@/components/DashboardCard';
+import DisplayImage from '@/components/DisplayImage';
 import NavBar from '@/components/NavBar';
 import { addUser } from '@/utilities/addUser';
 import { fetcher } from '@/utilities/fetcher';
+import { fetchImageBase64 } from '@/utilities/imageFetcher';
 import { Car } from '@/utilities/types';
 import { getSession } from '@auth0/nextjs-auth0';
 import { redirect } from 'next/navigation';
@@ -28,6 +30,9 @@ export default async function Dashboard() {
     if(currentCar !== null && parseFloat(currentCar.total_fuel_costs) > 0 && currentCar.miles > 0){
         dpm = Math.round(parseFloat(currentCar.total_fuel_costs) / currentCar.miles * 100) / 100
     }
+
+    let imageSrc = ""
+    if(currentCar !== null) imageSrc = await fetchImageBase64(session, currentCar?.car_id);
 
     return (
         <div>
@@ -55,6 +60,11 @@ export default async function Dashboard() {
                         </div>
                     </div>
                 </div>
+                {imageSrc != "" && <div className='flex justify-center'>
+                    <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
+                        <DisplayImage imageSrc={imageSrc} />
+                    </div>
+                </div>}
                 <div className='flex justify-center'>
                     <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
                         <div className='flex'>

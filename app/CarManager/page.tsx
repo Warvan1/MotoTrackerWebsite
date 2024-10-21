@@ -2,6 +2,7 @@ import CarManagerList from '@/components/CarManagerList';
 import NavBar from '@/components/NavBar';
 import { addUser } from '@/utilities/addUser';
 import { fetcher } from '@/utilities/fetcher';
+import { fetchImageBase64 } from '@/utilities/imageFetcher';
 import { Cars } from '@/utilities/types';
 import { getSession } from '@auth0/nextjs-auth0';
 import { redirect } from 'next/navigation';
@@ -12,6 +13,10 @@ export default async function CarManager() {
     await addUser(session)
 
     const cars: Cars = await fetcher("/getcars", { session: session })
+
+    for(let i = 0; i < cars.cars.length; i++){
+        cars.cars[i].imageSrc = await fetchImageBase64(session, cars.cars[i].car_id)
+    }
 
     return (
         <div>

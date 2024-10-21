@@ -31,7 +31,8 @@ export type Car = {
     air_filter_miles: number,
     inspection_time: string,
     registration_time: string,
-    permissions: string
+    permissions: string,
+    imageSrc?: string
 }
 
 export type Cars = {

@@ -6,6 +6,7 @@ import ShareCarButton from "./ShareCarButton";
 import DeleteCarButton from "./DeleteCarButton";
 import EditCarButton from "./EditCarButton";
 import { useState } from "react";
+import DisplayImage from "./DisplayImage";
 
 type Props = {
     carProp: Car,
@@ -47,6 +48,7 @@ export default function CarManagerCard({ carProp, user, currentCar, setCurrentCa
                 {user === car.user_id && <ShareCarButton car_id={car.car_id}/>}
                 {car.permissions === "Edit" && <EditCarButton car={car} setCar={setCar}/>}
                 <DeleteCarButton user={user} car={car} setDeleted={setDeleted}/>
+                {car.imageSrc && car.imageSrc !== "" && <DisplayImage imageSrc={car.imageSrc} />}
             </div>}
         </>
     )
