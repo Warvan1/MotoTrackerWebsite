@@ -12,6 +12,7 @@ import {
     Legend,
 } from 'chart.js';
 import { useState } from "react";
+import Card from "./Card";
   
 // Register the required chart components
 ChartJS.register(
@@ -64,24 +65,22 @@ export default function StatisticsGraph({ graphData }: Props){
 
     return (
         <>
-            <div className="flex justify-center">
-                <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
-                    <form>
-                        <div className="m-1">
-                            <label className="block text-sm mb-2">Graph Data</label>
-                            <select 
-                                name="type"
-                                value={selectedDataSet}
-                                className="border border-blue-300 bg-blue-600 p-2 rounded-md w-full"
-                                onChange={handleSelectChange}>
-                                    <option value="mpgData">Miles Per Gallon</option>
-                                    <option value="dpgData">Dollars Per Gallon</option>
-                                    <option value="dpmData">Dollars Per Mile</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <Card>
+                <form>
+                    <div className="m-1">
+                        <label className="block text-sm mb-2 text-text">Graph Data</label>
+                        <select 
+                            name="type"
+                            value={selectedDataSet}
+                            className="bg-secondary text-textButton p-2 rounded-md w-full"
+                            onChange={handleSelectChange}>
+                                <option value="mpgData">Miles Per Gallon</option>
+                                <option value="dpgData">Dollars Per Gallon</option>
+                                <option value="dpmData">Dollars Per Mile</option>
+                        </select>
+                    </div>
+                </form>
+            </Card>
             <div className="flex justify-center">
                 <div className="m-3 p-3 w-[48rem] h-[36rem]">
                     <Line data={data} options={options} />

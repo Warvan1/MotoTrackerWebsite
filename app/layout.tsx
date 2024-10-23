@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { cookies } from "next/headers";
 
 const geistSans = localFont({
     src: "../fonts/GeistVF.woff",
@@ -21,10 +22,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+    const themeCookie = cookies().get("theme")
+    const theme = themeCookie?.value || "day"
+
     return (
-        <html lang="en" className="bg-background">
+        <html lang="en" className={theme}>
             <UserProvider>
-                <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+                <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}>
                     {children}
                 </body>
             </UserProvider>

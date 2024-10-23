@@ -58,7 +58,7 @@ export default function AddCarButton({ carsList, setCarsList, setCurrentCar }: P
     return (
         <>
             <div className="flex justify-center">
-                <button onClick={handleOpenModal} className="flex p-3 bg-green-600 hover:bg-green-900 rounded-full">Add Car</button>
+                <button onClick={handleOpenModal} className="flex p-3 bg-tertiary hover:bg-tertiaryContrast rounded-full">Add Car</button>
             </div>
 
             {showModal && (

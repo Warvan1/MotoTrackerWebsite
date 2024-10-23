@@ -1,4 +1,5 @@
 import AddMaintenanceLog from '@/components/AddMaintenanceLog';
+import Card from '@/components/Card';
 import DashboardCard from '@/components/DashboardCard';
 import DisplayImage from '@/components/DisplayImage';
 import NavBar from '@/components/NavBar';
@@ -38,49 +39,43 @@ export default async function Dashboard() {
         <div>
             <NavBar sessionBool={true}/>
             {currentCar != null && <>
-                <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Dashboard</p>
+                <p className='flex justify-center p-2 text-text text-lg'>Dashboard</p>
                 <div className='flex justify-center'>
                     <AddMaintenanceLog currentCar={currentCar}/>
                 </div>
-                <div className='flex justify-center'>
-                    <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
-                        <div className='flex'>
-                            <p className="p-1 text-xl">{currentCar.name}</p>
-                        </div>
-                        <div className='flex'>
-                            <p className="py-1 pr-8 pl-1 text-sm">{currentCar.year}</p>
-                            <p className="py-1 pr-8 pl-1 text-sm">{currentCar.make}</p>
-                            <p className="py-1 pr-8 pl-1 text-sm">{currentCar.model}</p>
-                        </div>
-                        <div className='flex'>
-                            <p className="py-1 pr-8 pl-1 text-sm">Total Costs: {currentCar.total_costs}</p>
-                        </div>
-                        <div className='flex'>
-                            <p className="py-1 pr-8 pl-1 text-sm">Miles: {currentCar.miles}</p>
-                        </div>
+                <Card>
+                    <div className='flex'>
+                        <p className="p-1 text-xl text-text">{currentCar.name}</p>
                     </div>
-                </div>
-                {imageSrc != "" && <div className='flex justify-center'>
-                    <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
-                        <DisplayImage imageSrc={imageSrc} />
+                    <div className='flex'>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">{currentCar.year}</p>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">{currentCar.make}</p>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">{currentCar.model}</p>
                     </div>
-                </div>}
-                <div className='flex justify-center'>
-                    <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
-                        <div className='flex'>
-                            <p className="p-1 text-xl">Fuel</p>
-                        </div>
-                        <div className='flex'>
-                            <p className="py-1 pr-8 pl-1 text-sm">Miles Per Gallon: {mpg}</p>
-                        </div>
-                        <div className='flex'>
-                            <p className="py-1 pr-8 pl-1 text-sm">Dollars Per Gallon: {dpg}</p>
-                        </div>
-                        <div className='flex'>
-                            <p className="py-1 pr-8 pl-1 text-sm">Dollars Per Mile: {dpm}</p>
-                        </div>
+                    <div className='flex'>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">Total Costs: {currentCar.total_costs}</p>
                     </div>
-                </div>
+                    <div className='flex'>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">Miles: {currentCar.miles}</p>
+                    </div>
+                </Card>
+                {imageSrc != "" && <Card>
+                    <DisplayImage imageSrc={imageSrc} />
+                </Card>}
+                <Card>
+                    <div className='flex'>
+                        <p className="p-1 text-xl text-text">Fuel</p>
+                    </div>
+                    <div className='flex'>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">Miles Per Gallon: {mpg}</p>
+                    </div>
+                    <div className='flex'>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">Dollars Per Gallon: {dpg}</p>
+                    </div>
+                    <div className='flex'>
+                        <p className="py-1 pr-8 pl-1 text-sm text-text">Dollars Per Mile: {dpm}</p>
+                    </div>
+                </Card>
                 <DashboardCard title="Oil Change" timestamp={parseInt(currentCar.oil_change_time)} milesDifference={currentCar.miles - currentCar.oil_change_miles} />
                 <DashboardCard title="Tire Rotation" timestamp={parseInt(currentCar.tire_rotation_time)} milesDifference={currentCar.miles - currentCar.tire_rotation_miles} />
                 <DashboardCard title="Air Filter" timestamp={parseInt(currentCar.air_filter_time)} milesDifference={currentCar.miles - currentCar.air_filter_miles} />

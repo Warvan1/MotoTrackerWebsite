@@ -7,7 +7,7 @@ export default function NavBarButton({ title, url }: Props){
 
     return (
         <a href={url}>
-            <button className="flex m-3 p-3 bg-red-600 hover:bg-red-900 rounded-full">{title}</button>
+            <button className="flex m-3 p-3 bg-primary hover:bg-primaryContrast text-textButton rounded-full">{title}</button>
         </a>
     )
 }

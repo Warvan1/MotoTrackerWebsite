@@ -1,3 +1,4 @@
+import Card from "./Card"
 
 type Props = {
     title: string,
@@ -31,19 +32,17 @@ export default function DashboardCard({ title, timestamp, milesDifference }: Pro
     
     return (
         <>
-            {timestamp > 0 && <div className='flex justify-center'>
-                <div className="m-3 p-3 w-[24rem] bg-red-600 rounded-3xl">
-                    <div className="flex">
-                        <p className="p-1 text-xl">{title}</p>
-                    </div>
-                    {timestamp && <div className="flex">
-                        <p className="py-1 pr-8 pl-1 text-sm">Time Since: {formatTimeInterval(timestamp)}</p>
-                    </div>}
-                    {milesDifference && <div className="flex">
-                        <p className="py-1 pr-8 pl-1 text-sm">Miles Since: {milesDifference}</p>
-                    </div>}
+            {timestamp > 0 && <Card>
+                <div className="flex">
+                    <p className="p-1 text-xl text-text">{title}</p>
                 </div>
-            </div>}
+                {timestamp && <div className="flex">
+                    <p className="py-1 pr-8 pl-1 text-sm text-text">Time Since: {formatTimeInterval(timestamp)}</p>
+                </div>}
+                {milesDifference && <div className="flex">
+                    <p className="py-1 pr-8 pl-1 text-sm text-text">Miles Since: {milesDifference}</p>
+                </div>}
+            </Card>}
         </>
     )
 }

@@ -40,7 +40,7 @@ export default function DeleteMaintenanceLog({ id }: Props){
 
     return (
         <>
-            <button onClick={handleOpenModal} className="m-1 p-2 bg-yellow-600 hover:bg-yellow-900 rounded-full">Delete</button>
+            <button onClick={handleOpenModal} className="m-1 p-2 bg-secondary hover:bg-secondary text-textButton rounded-full">Delete</button>
             {showModal && 
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">

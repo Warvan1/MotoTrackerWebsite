@@ -60,8 +60,7 @@ export default function UploadImage({ car_id }: Props) {
 
     return (
         <>
-                <button onClick={handleOpenModal} className="m-1 p-2 bg-sky-600 hover:bg-sky-900 rounded-full">Upload Image</button>
-
+            <button onClick={handleOpenModal} className="m-1 p-2 bg-tertiary hover:bg-tertiaryContrast rounded-full">Upload Image</button>
             {showModal && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">

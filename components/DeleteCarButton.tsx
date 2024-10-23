@@ -69,7 +69,7 @@ export default function DeleteCarButton({ user, car, setDeleted}: Props){
 
     return (
         <>
-            <button onClick={handleOpenModal} className="m-1 p-2 bg-yellow-600 hover:bg-yellow-900 rounded-full">{ownership ? "Delete" : "Remove Access"}</button>
+            <button onClick={handleOpenModal} className="m-1 p-2 bg-error hover:bg-errorContrast text-textButton rounded-full">{ownership ? "Delete" : "Remove Access"}</button>
             {showModal && ownership && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">

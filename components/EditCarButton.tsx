@@ -63,7 +63,7 @@ export default function EditCarButton({ car, setCar }: Props){
 
     return (
         <>
-            <button onClick={handleOpenModal} className="m-1 p-2 bg-purple-600 hover:bg-purple-900 rounded-full">Edit</button>
+            <button onClick={handleOpenModal} className="m-1 p-2 bg-secondary hover:bg-secondaryContrast text-textButton rounded-full">Edit</button>
             {showModal && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">

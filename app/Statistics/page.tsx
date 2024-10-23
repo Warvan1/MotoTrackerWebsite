@@ -49,7 +49,7 @@ export default async function Statistics(){
     return(
         <div>
             <NavBar sessionBool={true}/>
-            <p className='flex justify-center p-2 top-0 w-screen text-white text-lg'>Statistics - {currentCar.name}</p>
+            <p className='flex justify-center p-2 text-text text-lg'>Statistics - {currentCar.name}</p>
             <StatisticsGraph graphData={graphData}/>
         </div>
     )
