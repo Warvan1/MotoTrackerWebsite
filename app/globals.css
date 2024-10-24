@@ -16,8 +16,8 @@
     --tertiary-container-color: #FAD8FD;
     --tertiary-contrast-color: #E1C0E5;
     --error-color: #BA1A1A;
-    --errorContainer: #FFDAD6;
-    --errorContrast: #FFBAB1;
+    --error-container-color: #FFDAD6;
+    --error-contrast-color: #FFBAB1;
 }
 
 .night {
