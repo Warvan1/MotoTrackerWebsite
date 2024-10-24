@@ -34,6 +34,6 @@
     --tertiary-container-color: #573E5C;
     --tertiary-contrast-color: #523A58;
     --error-color: #FFB4AB;
-    --errorContainer: #93000A;
-    --errorContrast: #8C0009;
+    --error-container-color: #93000A;
+    --error-contrast-color: #8C0009;
 }

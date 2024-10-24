@@ -72,25 +72,25 @@ export default function DeleteCarButton({ user, car, setDeleted}: Props){
             <button onClick={handleOpenModal} className="m-1 p-2 bg-error hover:bg-errorContrast text-textButton rounded-full">{ownership ? "Delete" : "Remove Access"}</button>
             {showModal && ownership && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">
-                        <p className="text-2xl mb-4">Delete Car</p>
+                    <div className="fixed bg-secondaryContainer p-8 rounded-md shadow-md w-full max-w-md">
+                        <p className="text-2xl mb-4 text-text">Delete Car</p>
                         <form onSubmit={handleDeleteSubmit}>
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Name</label>
+                                <label className="block text-sm mb-2 text-text">Name</label>
                                 <input
                                     name="name"
                                     type="text"
                                     maxLength={15}
                                     required={true}
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                     placeholder="Type Name Of Car To Permanatly Delete"
                                 />
                             </div>
 
                             <div className="flex justify-end">
-                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-red-500 hover:bg-red-700 text-white">Close</button>
-                                <button type="submit" className="px-4 py-2 rounded-md bg-yellow-600 hover:bg-yellow-900 text-white">Delete Forever</button>
+                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-error hover:bg-errorContrast text-textButton">Close</button>
+                                <button type="submit" className="px-4 py-2 rounded-md bg-primary hover:bg-primaryContrast text-textButton">Delete Forever</button>
                             </div>
                         </form>
                     </div>
@@ -98,12 +98,12 @@ export default function DeleteCarButton({ user, car, setDeleted}: Props){
             )}
             {showModal && !ownership && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">
-                        <p className="text-2xl mb-4">Remove My Access</p>
+                    <div className="fixed bg-secondaryContainer p-8 rounded-md shadow-md w-full max-w-md">
+                        <p className="text-2xl mb-4 text-text">Remove My Access</p>
                         <form onSubmit={handleRemoveAccessSubmit}>
                             <div className="flex justify-end">
-                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-red-500 hover:bg-red-700 text-white">Close</button>
-                                <button type="submit" className="px-4 py-2 rounded-md bg-yellow-600 hover:bg-yellow-900 text-white">Remove Access</button>
+                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-error hover:bg-errorContrast text-textButton">Close</button>
+                                <button type="submit" className="px-4 py-2 rounded-md bg-primary hover:bg-primaryContrast text-textButton">Remove Access</button>
                             </div>
                         </form>
                     </div>

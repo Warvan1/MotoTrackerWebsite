@@ -66,24 +66,24 @@ export default function EditCarButton({ car, setCar }: Props){
             <button onClick={handleOpenModal} className="m-1 p-2 bg-secondary hover:bg-secondaryContrast text-textButton rounded-full">Edit</button>
             {showModal && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">
-                        <p className="text-2xl mb-4">Edit Car</p>
+                    <div className="fixed bg-secondaryContainer p-8 rounded-md shadow-md w-full max-w-md">
+                        <p className="text-2xl mb-4 text-text">Edit Car</p>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Name</label>
+                                <label className="block text-sm mb-2 text-text">Name</label>
                                 <input
                                     name="name"
                                     type="text"
                                     maxLength={15}
                                     required={true}
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                     value={formData.name}
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Year</label>
+                                <label className="block text-sm mb-2 text-text">Year</label>
                                 <input
                                     name="year"
                                     type="number"
@@ -91,53 +91,53 @@ export default function EditCarButton({ car, setCar }: Props){
                                     min="1900"
                                     max={new Date().getFullYear() + 1}
                                     required={true}
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                     value={formData.year}
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Make</label>
+                                <label className="block text-sm mb-2 text-text">Make</label>
                                 <input
                                     name="make"
                                     type="text"
                                     maxLength={10}
                                     required={true}
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                     value={formData.make}
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Model</label>
+                                <label className="block text-sm mb-2 text-text">Model</label>
                                 <input
                                     name="model"
                                     type="text"
                                     maxLength={10}
                                     required={true}
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                     value={formData.model}
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Miles</label>
+                                <label className="block text-sm mb-2 text-text">Miles</label>
                                 <input
                                     name="miles"
                                     type="number"
                                     step="1"
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                     value={formData.miles}
                                 />
                             </div>
 
                             <div className="flex justify-end">
-                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-red-500 hover:bg-red-700 text-white">Close</button>
-                                <button type="submit" className="px-4 py-2 rounded-md bg-green-600 hover:bg-green-900 text-white">Submit</button>
+                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-error hover:bg-errorContrast text-textButton">Close</button>
+                                <button type="submit" className="px-4 py-2 rounded-md bg-primary hover:bg-primaryContrast text-textButton">Submit</button>
                             </div>
                         </form>
                     </div>

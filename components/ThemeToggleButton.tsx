@@ -24,6 +24,6 @@ export default function ThemeToggleButton(){
     }
 
     return (
-        <button onClick={toggleTheme} className="flex m-3 p-3 bg-primary hover:bg-primaryContrast text-textButton rounded-full">{theme === "day" ? "Night" : "Day"} Mode</button>
+        <button onClick={toggleTheme} className="flex m-3 p-3 bg-tertiary hover:bg-tertiaryContrast text-textButton rounded-full">{theme === "day" ? "Dark" : "Light"} Mode</button>
     )
 }

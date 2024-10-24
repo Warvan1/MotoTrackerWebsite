@@ -67,15 +67,15 @@ export default function AddMaintenanceLog({ currentCar }: Props){
             <button onClick={handleOpenModal} className="flex p-2 bg-tertiary hover:bg-tertiaryContrast text-textButton rounded-full">Add Maintenance</button>
             {showModal && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">
-                        <p className="text-2xl mb-4">Add Maintenance</p>
+                    <div className="fixed bg-secondaryContainer p-8 rounded-md shadow-md w-full max-w-md">
+                        <p className="text-2xl mb-4 text-text">Add Maintenance</p>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Type</label>
+                                <label className="block text-sm mb-2 text-text">Type</label>
                                 <select 
                                     name="type"
                                     value={formData.type}
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleSelectChange}>
                                         <option value="Fuel">Fuel</option>
                                         <option value="Maintenance">Maintenance</option>
@@ -87,49 +87,49 @@ export default function AddMaintenanceLog({ currentCar }: Props){
                                 </select>
                             </div>
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Cost</label>
+                                <label className="block text-sm mb-2 text-text">Cost</label>
                                 <input
                                     name="cost"
                                     type="number"
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                 />
                             </div>
 
                             {formData.type === "Fuel" && <div className="mb-4">
-                                <label className="block text-sm mb-2">Gallons</label>
+                                <label className="block text-sm mb-2 text-text">Gallons</label>
                                 <input
                                     name="gallons"
                                     type="number"
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                 />
                             </div>}
 
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Odometer</label>
+                                <label className="block text-sm mb-2 text-text">Odometer</label>
                                 <input
                                     name="miles"
                                     type="number"
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                     value={formData.miles}
                                 />
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">Notes</label>
+                                <label className="block text-sm mb-2 text-text">Notes</label>
                                 <input
                                     name="notes"
                                     type="text"
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     onChange={handleChange}
                                 />
                             </div>
 
                             <div className="flex justify-end">
-                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-red-500 hover:bg-red-700 text-white">Close</button>
-                                <button type="submit" className="px-4 py-2 rounded-md bg-green-600 hover:bg-green-900 text-white">Submit</button>
+                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-error hover:bg-errorContrast text-textButton">Close</button>
+                                <button type="submit" className="px-4 py-2 rounded-md bg-primary hover:bg-primaryContrast text-textButton">Submit</button>
                             </div>
                         </form>
                     </div>

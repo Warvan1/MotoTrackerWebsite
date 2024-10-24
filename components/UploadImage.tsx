@@ -63,22 +63,22 @@ export default function UploadImage({ car_id }: Props) {
             <button onClick={handleOpenModal} className="m-1 p-2 bg-tertiary hover:bg-tertiaryContrast rounded-full">Upload Image</button>
             {showModal && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="fixed bg-white p-8 rounded-md shadow-md w-full max-w-md">
-                        <p className="text-2xl mb-4">Add Car</p>
+                    <div className="fixed bg-secondaryContainer p-8 rounded-md shadow-md w-full max-w-md">
+                        <p className="text-2xl mb-4 text-text">Add Car</p>
                         <form onSubmit={handleUpload}>
                             <div className="mb-4">
-                                <label className="block text-sm mb-2">{status}</label>
+                                <label className="block text-sm mb-2 text-text">{status}</label>
                                 <input
                                     type="file"
-                                    className="border border-gray-300 p-2 rounded-md w-full"
+                                    className="border bg-secondaryContainer border-text text-text p-2 rounded-md w-full"
                                     accept="image/jpeg"
                                     onChange={handleFileChange}
                                 />
                             </div>
 
                             <div className="flex justify-end">
-                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-red-500 hover:bg-red-700 text-white">Close</button>
-                                <button type="submit" className="px-4 py-2 rounded-md bg-green-600 hover:bg-green-900 text-white">Upload</button>
+                                <button type="button" onClick={handleCloseModal} className="px-4 py-2 rounded-md mr-2 bg-error hover:bg-errorContrast text-textButton">Close</button>
+                                <button type="submit" className="px-4 py-2 rounded-md bg-primary hover:bg-primaryContrast text-textButton">Upload</button>
                             </div>
                         </form>
                     </div>
