@@ -12,10 +12,18 @@ export default async function CarManager() {
     if(!session) redirect("/api/auth/login")
     await addUser(session)
 
-    const cars: Cars = await fetcher("/getcars", { session: session })
+    let cars: Cars = await fetcher("/getcars", { session: session })
 
-    for(let i = 0; i < cars.cars.length; i++){
-        cars.cars[i].imageSrc = await fetchImageBase64(session, cars.cars[i].car_id)
+    if(cars !== null){
+        for(let i = 0; i < cars.cars.length; i++){
+            cars.cars[i].imageSrc = await fetchImageBase64(session, cars.cars[i].car_id)
+        }
+    }
+    else{
+        cars = {
+            cars: [],
+            current_car: 0
+        }
     }
 
     return (
