@@ -4,6 +4,7 @@ MotoTracker is a Next.js Website used to manage car maintenance and track fuel c
 ## Usage
 Go to mototracker.xyz and create an account or use the guest account with the following login.
 Guest@mototracker.xyz Password: Guest1!!
+
 To get started with the app navigate to the Car Manager page and set up a car entry, 
 then navigate to the Maintenance Log page and add mantenance entries.
 
