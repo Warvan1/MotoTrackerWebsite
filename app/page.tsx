@@ -20,7 +20,7 @@ export default async function Home() {
                 <p className='flex p-2 text-text text-sm'>With the android app you can use MotoTracker in a more convienent way. You can add fuel mantenance log entries using your phone camera by taking a picture of the fuel pump.</p>
                 <p className='flex p-2 text-text text-sm'>To use the app clone the github repository and download it on your phone using android studio.</p>
                 <a href="https://github.com/Warvan1/MotoTracker">
-                    <button className='flex p-2 text-text-button bg-tertiary rounded-full'>Github</button>
+                    <button className='flex p-2 text-textButton bg-tertiary hover:bg-tertiaryContrast rounded-full'>Github</button>
                 </a>
             </Card>
             <div className="flex justify-center">
