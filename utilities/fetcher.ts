@@ -42,12 +42,16 @@ export async function fetcher(url: string, options: FetcherOptions){
         fetchOptions.body = JSON.stringify(options.body)
     }
 
-    const res = await fetch(`${process.env.AUTH0_API_BASE_URL}${url}`, fetchOptions);
-    //if the api returns a bad result it might be because of an expired auth0 key
-    //this shouldnt happen often so just logout
-    if(!res.ok){
-        redirect("/api/auth/logout")
+    try{
+        const res = await fetch(`${process.env.AUTH0_API_BASE_URL}${url}`, fetchOptions);
+        //if the api returns a bad result it might be because of an expired auth0 key
+        //this shouldnt happen often so just logout
+        if(!res.ok){
+            redirect("/api/auth/logout")
+        }
+        const data = await res.json();
+        return data;
+    } catch {
+        redirect("/FailedConnection")
     }
-    const data = await res.json();
-    return data;
 }
