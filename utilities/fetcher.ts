@@ -46,7 +46,6 @@ export async function fetcher(url: string, options: FetcherOptions){
     //if the api returns a bad result it might be because of an expired auth0 key
     //this shouldnt happen often so just logout
     if(!res.ok){
-        console.log("test")
         redirect("/api/auth/logout")
     }
     const data = await res.json();
