@@ -34,15 +34,15 @@ export default async function Home() {
             </Card>
             <Card>
                 <p className='flex justify-center p-2 text-text'>Dashboard</p>
-                <p className='flex p-2 text-text text-sm'>The Dashboard displayes information about the selected car from the Car Manager. It also displayes the most recient maintenance by category.</p>
+                <p className='flex p-2 text-text text-sm'>The Dashboard displays information about the selected car from the Car Manager. It also displays the most recent maintenance by category.</p>
             </Card>
             <Card>
                 <p className='flex justify-center p-2 text-text'>Maintenance Log</p>
-                <p className='flex p-2 text-text text-sm'>The Maintenance Log is used to add, view, and delete mantenance log entries for the selected car.</p>
+                <p className='flex p-2 text-text text-sm'>The Maintenance Log is used to add, view, and delete maintenance log entries for the selected car.</p>
             </Card>
             <Card>
                 <p className='flex justify-center p-2 text-text'>Statistics</p>
-                <p className='flex p-2 text-text text-sm'>The Statistics page displayes graphs for the selected car relating to fuel costs and efficiency.</p>
+                <p className='flex p-2 text-text text-sm'>The Statistics page displays graphs for the selected car relating to fuel costs and efficiency.</p>
             </Card>
             <Card>
                 <p className='flex justify-center p-2 text-text'>Car Manager</p>
