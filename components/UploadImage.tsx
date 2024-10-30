@@ -45,7 +45,7 @@ export default function UploadImage({ car_id }: Props) {
                 const res = await fetch(`/api/uploadImage?car_id=${car_id}`, {
                     method: "POST",
                     headers: {
-                        "content-Type": "application/octet-stream"
+                        "Content-Type": "application/octet-stream"
                     },
                     body: arrayBuffer
                 })
