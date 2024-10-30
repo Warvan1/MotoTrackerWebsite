@@ -49,6 +49,7 @@ export default function AddCarButton({ carsList, setCarsList, setCurrentCar }: P
             method: 'POST',
             body: formData
         });
+        newCar.permissions = "Edit"
 
         if(setCarsList && carsList) setCarsList({ cars: [...carsList.cars, newCar], current_car: newCar.car_id })
         if(setCurrentCar) setCurrentCar(newCar.car_id)

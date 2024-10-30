@@ -13,9 +13,8 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({error: 'car_id not found'}, { status: 401 })
     }
 
-    const contentType = req.headers.get("content-type")
-    if(contentType !== "image/jpeg") {
-        return NextResponse.json({error: 'only jpeg images allowed'}, { status: 401 })
+    if(req.headers.get("content-type") !== "application/octet-stream") {
+        return NextResponse.json({error: 'fix content type'}, { status: 401 })
     }
 
     const imageBuffer = await req.arrayBuffer()
@@ -23,7 +22,7 @@ export async function POST(req: NextRequest) {
     await fetch(`${process.env.AUTH0_API_BASE_URL}/uploadCarImage?car_id=${car_id}`, {
         method: "POST",
         headers: {
-            "Content-Type": contentType,
+            "Content-Type": "image/jpeg",
             Authorization: `Bearer ${session.accessToken}`,
             userid: session.user.sub
         },

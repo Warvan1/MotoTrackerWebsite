@@ -37,21 +37,27 @@ export default function UploadImage({ car_id }: Props) {
         setStatus("uploading...")
 
         try {
-            const arrayBuffer = await selectedFile.arrayBuffer();
+            const reader = new FileReader();
 
-            const res = await fetch(`/api/uploadImage?car_id=${car_id}`, {
-                method: "POST",
-                headers: {
-                    "content-Type": selectedFile.type
-                },
-                body: arrayBuffer
-            })
+            reader.onload = async () => {
+                const arrayBuffer = reader.result;
 
-            if (res.ok) {
-                setStatus("Image uploaded successfully.")
-            } else {
-                setStatus("An error occured while uploading.")
+                const res = await fetch(`/api/uploadImage?car_id=${car_id}`, {
+                    method: "POST",
+                    headers: {
+                        "content-Type": "application/octet-stream"
+                    },
+                    body: arrayBuffer
+                })
+                if (res.ok) {
+                    setStatus("Image uploaded successfully.")
+                } else {
+                    setStatus("An error occured while uploading.")
+                }
             }
+
+            reader.readAsArrayBuffer(selectedFile);
+
         } catch (error) {
             console.error("Error uploading image: ", error)
             setStatus("An error occured while uploading.")
