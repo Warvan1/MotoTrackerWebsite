@@ -49,7 +49,7 @@ export default function EditCarButton({ car, setCar }: Props){
             return
         }
 
-        const editedCar = await clientFetcher({
+        const editedCar: Car = await clientFetcher({
             url: '/editcar',
             method: 'POST',
             car_id: car.car_id,
@@ -58,7 +58,8 @@ export default function EditCarButton({ car, setCar }: Props){
 
         handleCloseModal()
         editedCar.permissions = "Edit"
-        setCar(editedCar as Car)
+        editedCar.imageSrc = car.imageSrc
+        setCar(editedCar)
     }
 
     return (

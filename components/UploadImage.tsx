@@ -70,7 +70,7 @@ export default function UploadImage({ car_id }: Props) {
             {showModal && (
                 <div id="modal-overlay" onClick={handleOverlayClick} className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
                     <div className="fixed bg-secondaryContainer p-8 rounded-md shadow-md w-full max-w-md">
-                        <p className="text-2xl mb-4 text-text">Add Car</p>
+                        <p className="text-2xl mb-4 text-text">Upload Image</p>
                         <form onSubmit={handleUpload}>
                             <div className="mb-4">
                                 <label className="block text-sm mb-2 text-text">{status}</label>
