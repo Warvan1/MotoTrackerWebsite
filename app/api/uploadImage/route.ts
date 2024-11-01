@@ -9,15 +9,19 @@ export async function POST(req: NextRequest) {
     const url = new URL(req.url)
     const car_id = url.searchParams.get("car_id");
 
-    if(!car_id) {
+    if(!car_id){
         return NextResponse.json({error: 'car_id not found'}, { status: 401 })
     }
 
-    if(req.headers.get("content-type") !== "application/octet-stream") {
-        return NextResponse.json({error: 'fix content type'}, { status: 401 })
+    const formData = await req.formData();
+    const file = formData.get("image") as File | null
+
+    if(!file){
+        return NextResponse.json({error: 'file not found'}, { status: 401 })
     }
 
-    const imageBuffer = await req.arrayBuffer()
+    const arrayBuffer = await file.arrayBuffer()
+    const imageBuffer = Buffer.from(arrayBuffer);
 
     await fetch(`${process.env.AUTH0_API_BASE_URL}/uploadCarImage?car_id=${car_id}`, {
         method: "POST",

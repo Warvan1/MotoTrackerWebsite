@@ -37,29 +37,20 @@ export default function UploadImage({ car_id }: Props) {
         setStatus("uploading...")
 
         try {
-            const reader = new FileReader();
+            const formData = new FormData()
+            formData.append("image", selectedFile)
 
-            reader.onload = async () => {
-                const arrayBuffer = reader.result;
-
-                const res = await fetch(`/api/uploadImage?car_id=${car_id}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/octet-stream"
-                    },
-                    body: arrayBuffer
-                })
-                if (res.ok) {
-                    setStatus("Image uploaded successfully.")
-                } else {
-                    setStatus("An error occured while uploading.")
-                }
+            const res = await fetch(`/api/uploadImage?car_id=${car_id}`, {
+                method: "POST",
+                body: formData
+            })
+            if (res.ok) {
+                setStatus("Image uploaded successfully.")
+            } else {
+                setStatus("An error occured while uploading.")
             }
 
-            reader.readAsArrayBuffer(selectedFile);
-
-        } catch (error) {
-            console.error("Error uploading image: ", error)
+        } catch {
             setStatus("An error occured while uploading.")
         }
     }
