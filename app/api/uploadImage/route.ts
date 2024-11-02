@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
 
     const arrayBuffer = await file.arrayBuffer()
-    const imageBuffer = Buffer.from(arrayBuffer);
+    const imageBuffer = Buffer.from(arrayBuffer)
 
     await fetch(`${process.env.AUTH0_API_BASE_URL}/uploadCarImage?car_id=${car_id}`, {
         method: "POST",

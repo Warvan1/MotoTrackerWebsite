@@ -1,12 +1,14 @@
 "use client"
 
+import { Car } from "@/utilities/types"
 import { useState } from "react"
 
 type Props = {
-    car_id: number
+    car: Car,
+    setCar: (car: Car) => void | null,
 }
 
-export default function UploadImage({ car_id }: Props) {
+export default function UploadImage({ car, setCar }: Props) {
     const [ showModal, setShowModal ] = useState(false)
     const [ selectedFile, setSelectedFile ] = useState<File | null>(null)
     const [ status, setStatus ] = useState("")
@@ -29,7 +31,8 @@ export default function UploadImage({ car_id }: Props) {
         if(e.target.files !== null) setSelectedFile(e.target.files[0])
     }
 
-    const handleUpload = async () => {
+    const handleUpload = async (e: React.FormEvent) => {
+        e.preventDefault()
         if(!selectedFile){
             setStatus("Select a file.")
             return
@@ -37,10 +40,16 @@ export default function UploadImage({ car_id }: Props) {
         setStatus("uploading...")
 
         try {
+            const arrayBuffer = await selectedFile.arrayBuffer();
+            const base64String = Buffer.from(arrayBuffer).toString('base64')
+            setCar({
+                ...car,
+                imageSrc: `data:image/jpeg;base64,${base64String}`
+            })
+
             const formData = new FormData()
             formData.append("image", selectedFile)
-
-            const res = await fetch(`/api/uploadImage?car_id=${car_id}`, {
+            const res = await fetch(`/api/uploadImage?car_id=${car.car_id}`, {
                 method: "POST",
                 body: formData
             })
@@ -53,6 +62,7 @@ export default function UploadImage({ car_id }: Props) {
         } catch {
             setStatus("An error occured while uploading.")
         }
+        handleCloseModal()
     }
 
     return (
