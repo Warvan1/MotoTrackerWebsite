@@ -13,7 +13,8 @@ export default function UploadImage({ car, setCar }: Props) {
     const [ selectedFile, setSelectedFile ] = useState<File | null>(null)
     const [ status, setStatus ] = useState("")
 
-    const handleOpenModal = () => {
+    const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         setShowModal(true)
     }
 
@@ -22,6 +23,7 @@ export default function UploadImage({ car, setCar }: Props) {
     }
 
     const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
+        e.stopPropagation()
         if(e.target instanceof HTMLElement && e.target.id === 'modal-overlay'){
             handleCloseModal()
         }

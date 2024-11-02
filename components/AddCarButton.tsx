@@ -20,7 +20,8 @@ export default function AddCarButton({ carsList, setCarsList, setCurrentCar }: P
         miles: "0"
     })
 
-    const handleOpenModal = () => {
+    const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         setShowModal(true)
     }
 
@@ -29,6 +30,7 @@ export default function AddCarButton({ carsList, setCarsList, setCurrentCar }: P
     }
 
     const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
+        e.stopPropagation()
         if(e.target instanceof HTMLElement && e.target.id === 'modal-overlay'){
             handleCloseModal()
         }

@@ -20,7 +20,8 @@ export default function AddMaintenanceLog({ currentCar }: Props){
         notes: "",
     })
 
-    const handleOpenModal = () => {
+    const handleOpenModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         setShowModal(true)
     }
 
@@ -29,6 +30,7 @@ export default function AddMaintenanceLog({ currentCar }: Props){
     }
 
     const handleOverlayClick = (e: React.MouseEvent<HTMLElement>) => {
+        e.stopPropagation()
         if(e.target instanceof HTMLElement && e.target.id === 'modal-overlay'){
             handleCloseModal()
         }
