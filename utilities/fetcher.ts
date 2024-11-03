@@ -44,14 +44,18 @@ export async function fetcher(url: string, options: FetcherOptions){
 
     try{
         const res = await fetch(`${process.env.AUTH0_API_BASE_URL}${url}`, fetchOptions);
-        //if the api returns a bad result it might be because of an expired auth0 key
+        //if the api returns 401 it is probably because of an expired auth0 key
         //this shouldnt happen often so just logout
-        if(!res.ok){
+        if(res.status === 401){
             redirect("/api/auth/logout")
         }
-        const data = await res.json();
-        return data;
-    } catch {
-        redirect("/FailedConnection")
+        else{
+            return await res.json();
+        }
+    } catch (error) {
+        //catch network conectivity errors
+        if(error instanceof TypeError){
+            redirect("/FailedConnection")
+        }
     }
 }
